@@ -555,7 +555,7 @@
 				})
 				// restore draggable-handle (for <titlebar=none> only)
 				.dialog("widget")
-					.draggable("option", "handle", $(this).find(".ui-dialog-draggable-handle"))
+					.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
 					.find(".ui-dialog-draggable-handle")
 					.css("cursor", "move");
 			// maintain chainability
