@@ -1,6 +1,5 @@
-Latest Release
+jquery-dialogextend 1.0.1 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
 ===
-Version 1.0.1
 
 Compatible
 ===
