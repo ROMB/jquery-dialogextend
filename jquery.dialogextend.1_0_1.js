@@ -158,7 +158,10 @@
 					"draggable" : false,
 					"height" : newHeight,
 					"width" : newWidth,
-					"position" : [1, 1]
+					"position" :{
+							my: "left top",
+							at: "left top"
+					}
 				})
 				// mark new state
 				.dialogExtend("_setState", "maximized")
@@ -516,9 +519,10 @@
 					"maxHeight" : original.size.maxHeight
 				})
 				// restore position *AFTER* size restored
-				.dialog("option", {
-					"position" : [ original.position.left, original.position.top ]
-				})
+				.dialog("widget").offset({
+					top: original.position.top,
+					left: original.position.left 
+				});
 				// restore draggable-handle (for <titlebar=none> only)
 				if($(self).dialog("option","draggable")){
 					$(self)
@@ -573,9 +577,10 @@
 				//remove close trigger
 				.off('dialogclose',methods._removeOverlay)
 				// restore position *AFTER* size restored
-				.dialog("option", {
-					"position" : [ original.position.left, original.position.top ]
-				})
+				.dialog("widget").offset({
+					top: original.position.top,
+					left: original.position.left 
+				});
 				// restore draggable-handle (for <titlebar=none> only)
 				if($(self).dialog("option","draggable")){
 					$(self)
