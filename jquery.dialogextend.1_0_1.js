@@ -1,17 +1,17 @@
 /*!
- * jQuery DialogExtend 1.0
+ * jQuery DialogExtend 1.0.2
  *
- * Copyright (c) 2010 Shum Ting Hin
+ * Copyright (c) 2010 Shum Ting Hin, ROMB
  *
  * Licensed under MIT
  *   http:// www.opensource.org/licenses/mit-license.php
  *
  * Project Home:
- *   http:// code.google.com/p/jquery-dialogextend/
+ *   https://github.com/ROMB/jquery-dialogextend
  *
  * Depends:
- *   jQuery 1.7.2
- *   jQuery UI Dialog 1.8.22
+ *   jQuery 1.9.1
+ *   jQuery UI Dialog 1.10.2
  *
  */
 (function($){
