@@ -205,8 +205,12 @@
 				<div>
 					<input type="checkbox" id="is-resizable" checked="checked" />
 					<label for="is-resizable">Resizable</label>
-			</fieldset>
-		</div>
+				</div>
+				<div>
+					<input type="checkbox" id="is-draggable" checked="checked" />
+					<label for="is-draggable">Draggable</label>
+				</div>
+		</fieldset>
 	</form>
 </section>
 <br clear="both" />
@@ -235,6 +239,7 @@ $(function(){
 			"height" : 300,
 			"modal" : $("#is-modal").is(":checked"),
 			"resizable" : $("#is-resizable").is(":checked"),
+			"draggable" : $("#is-draggable").is(":checked"),
 			"close" : function(){ $(this).remove(); }
 		};
 		if ( $("#button-cancel").is(":checked") ) {
