@@ -192,16 +192,6 @@
 				.dialogExtend("_trigger", "beforeMinimize")
 				// remember original state
 				.dialogExtend("_saveSnapshot")
-				// move dialog from body to container (at lower-left-hand corner)
-				.dialog("widget")
-					.css({
-						// float is essential for stacking dialog when there are many many minimized dialogs
-						"float" : "left",
-						"margin" : 1,
-						"position" : "static"
-					})
-					.appendTo(fixedContainer)
-				.find(".ui-dialog-content")
 				// disable draggable-handle (for <titlebar=none> only)
 				.dialog("widget")
 					.draggable("option", "handle", null)
@@ -214,6 +204,16 @@
 					"height" : newHeight,
 					"width" : newWidth
 				})
+				// move dialog from body to container (at lower-left-hand corner)
+				.dialog("widget")
+					.css({
+						// float is essential for stacking dialog when there are many many minimized dialogs
+						"float" : "left",
+						"margin" : 1,
+						"position" : "static"
+					})
+					.appendTo(fixedContainer)
+				.find(".ui-dialog-content")
 				// avoid title text overlap buttons
 				.dialog("widget")
 					.find(".ui-dialog-titlebar").each(function(){
