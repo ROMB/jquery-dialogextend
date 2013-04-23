@@ -144,13 +144,15 @@
 				.show()
 				.dialog("widget")
 					.find(".ui-dialog-buttonpane").show().end()
-				.find(".ui-dialog-content")
 				// disable draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", null)
-					.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
-				.find(".ui-dialog-content")
+				if($(self).dialog("option","draggable")){
+					$(self)
+					.dialog("widget")
+						.draggable("option", "handle", null)
+						.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
+				}
 				// modify dialog with new config
+				$(self)
 				.dialog("option", {
 					"resizable" : false,
 					"draggable" : false,
@@ -201,11 +203,14 @@
 				// remember original state
 				.dialogExtend("_saveSnapshot")
 				// disable draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", null)
-					.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
-				.find(".ui-dialog-content")
+				if($(self).dialog("option","draggable")){
+					$(self)
+					.dialog("widget")
+						.draggable("option", "handle", null)
+						.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
+				}
 				// modify dialog with new config
+				$(self)
 				.dialog("option", {
 					"resizable" : false,
 					"draggable" : false,
@@ -215,6 +220,7 @@
 				// remove overlay on close
 				.on('dialogclose',methods._removeOverlay)
 				// move dialog from body to container (at lower-left-hand corner)
+				$(self)
 				.dialog("widget")
 					.css("position", "static")
 					.appendTo(overlay)
@@ -514,10 +520,13 @@
 					"position" : [ original.position.left, original.position.top ]
 				})
 				// restore draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
-					.find(".ui-dialog-draggable-handle")
-					.css("cursor", "move");
+				if($(self).dialog("option","draggable")){
+					$(self)
+					.dialog("widget")
+						.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
+						.find(".ui-dialog-draggable-handle")
+						.css("cursor", "move");
+				}
 			// maintain chainability
 			return self;
 		},
@@ -568,10 +577,13 @@
 					"position" : [ original.position.left, original.position.top ]
 				})
 				// restore draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
-					.find(".ui-dialog-draggable-handle")
-					.css("cursor", "move");
+				if($(self).dialog("option","draggable")){
+					$(self)
+					.dialog("widget")
+						.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
+						.find(".ui-dialog-draggable-handle")
+						.css("cursor", "move");
+				}
 			//remove parent
 			overlay.remove();
 			// maintain chainability
