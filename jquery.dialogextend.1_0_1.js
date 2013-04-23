@@ -279,7 +279,7 @@
 			$(titlebar)
 				.find(".ui-dialog-titlebar-close")
 					// override some unwanted jquery-ui styles
-					.css({ "position" : "static", "top" : "auto", "right" : "auto", "margin" : 0 })
+					.css({ "position" : "relative", "float" : "right", "top" : "auto", "right" : "auto", "margin" : 0 })
 					// change icon
 					.find(".ui-icon").removeClass("ui-icon-closethick").addClass(settings.icons.close).end()
 					// move to button-pane
