@@ -135,8 +135,7 @@
 				// fix dialog from scrolling
 				.dialog("widget")
 					.css({
-						// ie6 does not support {position:fixed} ===> simply use {absolute}
-						"position" : ( $.browser.mise && parseInt($.browser.version) <= 6 ) ? "absolute" : "fixed"
+						"position" : "fixed"
 					})
 				.find(".ui-dialog-content")
 				// show content
@@ -185,8 +184,7 @@
 				var fixedContainer = $('<div id="dialog-extend-fixed-container"></div>').appendTo("body");
 			}
 			$(fixedContainer).css({
-				// ie6 does not support {position:fixed} ===> simply use {absolute}
-				"position" : ( $.browser.mise && parseInt($.browser.version) <= 6 ) ? "absolute" : "fixed",
+				"position" : "fixed",
 				"bottom" : 1,
 				"left" : 1,
 				"z-index" : 9999
