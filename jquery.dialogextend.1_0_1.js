@@ -186,8 +186,16 @@
 				"left" : 1,
 				"z-index" : 9999
 			});
+			//WORKAROUND for http://bugs.jqueryui.com/ticket/8722
+			var overlay = $('<div/>').css({
+				// float is essential for stacking dialog when there are many many minimized dialogs
+				"float" : "left",
+				"margin" : 1
+			});
+			fixedContainer.append(overlay)
 			// start!
 			$(self)
+				.data("dialog-extend-overlay",overlay)
 				// trigger custom event
 				.dialogExtend("_trigger", "beforeMinimize")
 				// remember original state
@@ -204,15 +212,12 @@
 					"height" : newHeight,
 					"width" : newWidth
 				})
+				// remove overlay on close
+				.on('dialogclose',methods._removeOverlay)
 				// move dialog from body to container (at lower-left-hand corner)
 				.dialog("widget")
-					.css({
-						// float is essential for stacking dialog when there are many many minimized dialogs
-						"float" : "left",
-						"margin" : 1,
-						"position" : "static"
-					})
-					.appendTo(fixedContainer)
+					.css("position", "static")
+					.appendTo(overlay)
 				.find(".ui-dialog-content")
 				// avoid title text overlap buttons
 				.dialog("widget")
@@ -428,7 +433,11 @@
 			// maintain chainability
 			return self;
 		},
-
+		
+		"_removeOverlay" : function(){
+			$(this).data("dialog-extend-overlay").remove()
+		},
+		
 		"_loadSnapshot" : function(){
 			var self = this;
 			return {
@@ -516,8 +525,11 @@
 		"_restoreFromMinimized" : function(){
 			var self = this;
 			var original = $(this).dialogExtend("_loadSnapshot");
+			//WORKAROUND FOR http://bugs.jqueryui.com/ticket/8722, must be removed AFTER reappending to body
+			var overlay = $(self).data("dialog-extend-overlay")
 			// restore dialog
 			$(self)
+				.removeData("dialog-extend-overlay")
 				// move dialog back from container to body
 				.dialog("widget")
 					.appendTo("body")
@@ -549,6 +561,8 @@
 					"width" : original.size.width,
 					"maxHeight" : original.size.maxHeight
 				})
+				//remove close trigger
+				.off('dialogclose',methods._removeOverlay)
 				// restore position *AFTER* size restored
 				.dialog("option", {
 					"position" : [ original.position.left, original.position.top ]
@@ -558,6 +572,8 @@
 					.draggable("option", "handle", $(self).dialog("widget").find(".ui-dialog-draggable-handle").length?$(self).dialog("widget").find(".ui-dialog-draggable-handle"):".ui-dialog-titlebar")
 					.find(".ui-dialog-draggable-handle")
 					.css("cursor", "move");
+			//remove parent
+			overlay.remove();
 			// maintain chainability
 			return self;
 		},
