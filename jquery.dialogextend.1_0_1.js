@@ -287,9 +287,9 @@
 				.end();
 			// append other buttons to button-pane
 			$(buttonPane)
-				.append('<a class="ui-dialog-titlebar-maximize ui-corner-all" href="#"><span class="ui-icon '+settings.icons.maximize+'">maximize</span></a>')
-				.append('<a class="ui-dialog-titlebar-restore ui-corner-all" href="#"><span class="ui-icon '+settings.icons.restore+'">restore</span></a>')
-				.append('<a class="ui-dialog-titlebar-minimize ui-corner-all" href="#"><span class="ui-icon '+settings.icons.minimize+'">minimize</span></a>')
+				.append('<a class="ui-dialog-titlebar-maximize ui-corner-all ui-state-default" href="#"><span class="ui-icon '+settings.icons.maximize+'">maximize</span></a>')
+				.append('<a class="ui-dialog-titlebar-restore ui-corner-all ui-state-default" href="#"><span class="ui-icon '+settings.icons.restore+'">restore</span></a>')
+				.append('<a class="ui-dialog-titlebar-minimize ui-corner-all ui-state-default" href="#"><span class="ui-icon '+settings.icons.minimize+'">minimize</span></a>')
 				// add effect to buttons
 				.find(".ui-dialog-titlebar-maximize,.ui-dialog-titlebar-minimize,.ui-dialog-titlebar-restore")
 					.attr("role", "button")
