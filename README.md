@@ -1,10 +1,10 @@
-jquery-dialogextend 1.0.1 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
+jquery-dialogextend 1.0.2 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
 ===
 
 Compatible
 ===
-- jQuery 1.7.2
-- jQueryUI 1.8.22
+- jQuery 1.9.1
+- jQueryUI 1.10.2
 
 Overview
 ===

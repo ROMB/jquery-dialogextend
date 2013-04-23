@@ -1,3 +1,8 @@
+1.0.2 / 2013-04-24
+===
+
+- make plugin be compatible with jquery 1.9.1 and jquery-ui 1.10.2
+
 1.0.1 / 2012-08-04 / hin
 ===
 
