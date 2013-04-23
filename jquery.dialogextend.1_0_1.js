@@ -202,10 +202,15 @@
 					})
 					.appendTo(fixedContainer)
 				.find(".ui-dialog-content")
+				// disable draggable-handle (for <titlebar=none> only)
+				.dialog("widget")
+					.draggable("option", "handle", null)
+					.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
+				.find(".ui-dialog-content")
 				// modify dialog with new config
 				.dialog("option", {
 					"resizable" : false,
-					//"draggable" : false,
+					"draggable" : false,
 					"height" : newHeight,
 					"width" : newWidth
 				})
@@ -228,11 +233,6 @@
 				.dialog("widget")
 					.find(".ui-dialog-buttonpane:visible").hide().end()
 					.find(".ui-dialog-titlebar").css("white-space", "nowrap").end()
-				.find(".ui-dialog-content")
-				// disable draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", null)
-					.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
 				.find(".ui-dialog-content")
 				// mark new state
 				.dialogExtend("_setState", "minimized")
