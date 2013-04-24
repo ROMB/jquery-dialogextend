@@ -6,7 +6,7 @@
 	<link class="jsbin" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 	<script class="jsbin" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script class="jsbin" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="jquery.dialogextend.1_0_1.js"></script>
+	<script type="text/javascript" src="jquery.dialogextend.js"></script>
 	<style id="jsbin-css">
 	body { color: #333333; font-family: Times, Helvetica, Arial; font-size: 16px; }
 	.ui-dialog { font-size: 12px; }
@@ -55,6 +55,10 @@
 				<div>
 					<input type="checkbox" id="button-minimize" checked="checked" />
 					<label for="button-minimize">Minimize button</label>
+				</div>
+				<div>
+					<input type="checkbox" id="button-collapse" checked="checked" />
+					<label for="button-collapse">Collapse button</label>
 				</div>
 			</fieldset>
 			<fieldset id="config-icon">
@@ -244,9 +248,10 @@ $(function(){
 		}
 		// dialog-extend options
 		var dialogExtendOptions = {
-			"close" : $("#button-close").is(":checked"),
-			"maximize" : $("#button-maximize").is(":checked"),
-			"minimize" : $("#button-minimize").is(":checked"),
+			"closable" : $("#button-close").is(":checked"),
+			"maximizable" : $("#button-maximize").is(":checked"),
+			"minimizable" : $("#button-minimize").is(":checked"),
+			"collapsable" : $("#button-collapse").is(":checked"),
 			"dblclick" : $("#my-form [name=dblclick]:checked").val() || false,
 			"titlebar" : $("#my-form [name=titlebar]:checked").val() || false
 		};
@@ -258,9 +263,8 @@ $(function(){
 		});
 		$("#my-form [name=event]").each(function(){
 			if ( $(this).is(":checked") ) {
-				dialogExtendOptions.events = dialogExtendOptions.events || {};
-				dialogExtendOptions.events[$(this).attr("rel")] = function(evt, dlg) {
-					$(dlg).prepend(evt.type+"."+evt.handleObj.namespace+"@"+new Date().getTime()+"<br />");
+				dialogExtendOptions[$(this).attr("rel")] = function(evt, a,b,c) {
+					$(evt.target).prepend(evt.type+"@"+evt.timeStamp+"<br />");
 				};
 			}
 		});
