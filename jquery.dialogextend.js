@@ -21,6 +21,7 @@
 		"close" : true,
 		"maximize" : false,
 		"minimize" : false,
+		"minimizeLocation" : "left",
 		"dblclick" : false,
 		"titlebar" : false,
 		"icons" : {
@@ -187,12 +188,13 @@
 				"position" : "fixed",
 				"bottom" : 1,
 				"left" : 1,
+				"right" : 1,
 				"z-index" : 9999
 			});
 			//WORKAROUND for http://bugs.jqueryui.com/ticket/8722
 			var overlay = $('<div/>').css({
 				// float is essential for stacking dialog when there are many many minimized dialogs
-				"float" : "left",
+				"float" : settings.minimizeLocation,
 				"margin" : 1
 			});
 			fixedContainer.append(overlay)
@@ -684,6 +686,14 @@
 			} else {
 				$.error( "jQuery.dialogExtend Error : Invalid <titlebar> value '" + settings.titlebar + "'" );
 				settings.titlebar = false;
+			}
+			// check <minimizeLocation> option
+			if ( !settings.minimizeLocation ) {
+			} else if ( settings.minimizeLocation == "left" ) {
+			} else if ( settings.minimizeLocation == "right" ) {
+			} else {
+				$.error( "jQuery.dialogExtend Error : Invalid <minimizeLocation> value '" + settings.minimizeLocation + "'" );
+				settings.minimizeLocation = "left";
 			}
 			// maintain chainability
 			return self;
