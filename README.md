@@ -48,6 +48,14 @@ Type: *Boolean*
 
 Default: *false*
 
+#### minimizeLocation ####
+
+Type: *String*
+
+Default: *'left'*
+
+Valid: *'left'*, *'right'*
+
 #### dblclick ####
 
 Type: *Boolean*, *String*
@@ -326,6 +334,7 @@ Example - Full Config
 	        "close" : true,
 	        "maximize" : true,
 	        "minimize" : true,
+	        "minimizeLocation" : "right",
 	        "dblclick" : "collapse",
 	        "titlebar" : "transparent",
 	        "icons" : {
