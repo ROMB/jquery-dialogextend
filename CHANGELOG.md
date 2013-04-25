@@ -1,5 +1,15 @@
+2.0.1 / 2013-04-26
+===
+
+- fix bug : wrong restore size
+- fix bug : wrong restore position on long and/or wide pages
+- fix bug : can't reopen dialog after closing it minimized
+- fix bug : broken style on reopen dialog after closing it collapsed
+- many internal fixes
+
 2.0.0 / 2013-04-25
 ===
+
 - make plugin be more modular
 - now jquery.ui plugin
 
