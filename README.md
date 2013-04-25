@@ -1,5 +1,10 @@
 jquery-dialogextend 2.0.0 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
 ===
+Download
+===
+[development build](https://raw.github.com/ROMB/jquery-dialogextend/master/build/jquery.dialogextend.js)
+
+[minified library](https://raw.github.com/ROMB/jquery-dialogextend/master/build/jquery.dialogextend.min.js)
 
 Compatible
 ===
@@ -19,7 +24,7 @@ Overview
 
 Demo
 ===
-- Test Tool : [http://jsbin.com/ehagoy/1/](http://jsbin.com/ehagoy/1/)
+- Test Tool : [http://jsbin.com/ehagoy/154/](http://jsbin.com/ehagoy/154/)
 - *Stylesheet of JSBin seems to ruin test tool in IE8. Other browsers are fine.*
 
 Tested Browsers
