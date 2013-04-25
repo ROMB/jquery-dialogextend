@@ -123,14 +123,12 @@ $.extend true,$.ui.dialogExtend.prototype,
         "height" : original.size.height,
         "width" : original.size.width,
         "maxHeight" : original.size.maxHeight
+        "position" :
+          my: "left top"
+          at: "left+"+original.position.left+" top+"+original.position.top
       )
       # remove close trigger
       .off('dialogclose',@_minimize_removeOverlay)
-      # restore position *AFTER* size restored
-      .dialog("widget").offset(
-        top: original.position.top
-        left: original.position.left 
-      )
       # restore draggable-handle (for <titlebar=none> only)
       if $(@element[0]).dialog("option","draggable")
         $(@element[0])
