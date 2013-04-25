@@ -27,6 +27,7 @@ $.extend true,$.ui.dialogExtend.prototype,
         "height" : newHeight
         "maxHeight" : newHeight
       )
+      .on('dialogclose',@_collapse_restore)
       # hide content
       # hide button-pane
       # make title-bar no-wrap
@@ -60,6 +61,7 @@ $.extend true,$.ui.dialogExtend.prototype,
         "height" : original.size.height
         "maxHeight" : original.size.maxHeight
       )
+      .off('dialogclose',@_collapse_restore)
 
   _initStyles_collapse:()->
     if not $(".dialog-extend-collapse-css").length
@@ -71,3 +73,6 @@ $.extend true,$.ui.dialogExtend.prototype,
       style += '.ui-dialog .ui-dialog-titlebar-collapse:focus { padding: 0; }'
       style += '</style>'
       $(style).appendTo("body")
+  
+  _collapse_restore:()->
+    $(@).dialogExtend("restore")

@@ -273,7 +273,7 @@
         "resizable": false,
         "height": newHeight,
         "maxHeight": newHeight
-      }).hide().dialog("widget").find(".ui-dialog-buttonpane:visible").hide().end().find(".ui-dialog-titlebar").css("white-space", "nowrap").end().find(".ui-dialog-content");
+      }).on('dialogclose', this._collapse_restore).hide().dialog("widget").find(".ui-dialog-buttonpane:visible").hide().end().find(".ui-dialog-titlebar").css("white-space", "nowrap").end().find(".ui-dialog-content");
       this._setState("collapsed");
       this._toggleButtons();
       return this._trigger("collapse");
@@ -286,7 +286,7 @@
         "resizable": original.config.resizable,
         "height": original.size.height,
         "maxHeight": original.size.maxHeight
-      });
+      }).off('dialogclose', this._collapse_restore);
     },
     _initStyles_collapse: function() {
       var style;
@@ -301,6 +301,9 @@
         style += '</style>';
         return $(style).appendTo("body");
       }
+    },
+    _collapse_restore: function() {
+      return $(this).dialogExtend("restore");
     }
   });
 
