@@ -23,6 +23,7 @@ $.widget "ui.dialogExtend",
     @_verifyOptions()
     @_initStyles()
     @_initButtons()
+    @_initTitleBar()
     @_setState "normal"
     @_on "load",(e)->
       console.log "test",e
@@ -148,9 +149,48 @@ $.widget "ui.dialogExtend",
           @[name]()
         )
         .end()
+
+  _initTitleBar:()->
+    switch @options.titlebar
+        when false then 0
+        when "none"
+          # create new draggable-handle as substitute of title bar
+          if $(@element[0]).dialog("option", "draggable")
+            handle = $("<div />").addClass("ui-dialog-draggable-handle").css("cursor", "move").height(5)
+            $(@element[0]).dialog("widget").prepend(handle).draggable("option", "handle", handle);
+          # remove title bar and keep it draggable
+          $(@element[0])
+            .dialog("widget")
+            .find(".ui-dialog-titlebar")
+              # clear title text
+              .find(".ui-dialog-title").html("&nbsp;").end()
+              # keep buttons at upper-right-hand corner
+              .css(
+                "background-color" : "transparent"
+                "background-image" : "none"
+                "border" : 0
+                "position" : "absolute"
+                "right" : 0
+                "top" : 0
+                "z-index" : 9999
+              )
+            .end();
+        when "transparent"
+          # remove title style
+          $(@element[0])
+            .dialog("widget")
+            .find(".ui-dialog-titlebar")
+            .css(
+              "background-color" : "transparent"
+              "background-image" : "none"
+              "border" : 0
+            )
+        else
+          $.error( "jQuery.dialogExtend Error : Invalid <titlebar> value '" + @options.titlebar + "'" );
+
   state:()->
     return @state
-  
+
   restore:()->
     # trigger custom event
     @_trigger "beforeRestore"

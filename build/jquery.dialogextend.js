@@ -26,6 +26,7 @@
       this._verifyOptions();
       this._initStyles();
       this._initButtons();
+      this._initTitleBar();
       this._setState("normal");
       this._on("load", function(e) {
         return console.log("test", e);
@@ -144,6 +145,36 @@
         e.preventDefault();
         return _this[name]();
       }).end();
+    },
+    _initTitleBar: function() {
+      var handle;
+
+      switch (this.options.titlebar) {
+        case false:
+          return 0;
+        case "none":
+          if ($(this.element[0]).dialog("option", "draggable")) {
+            handle = $("<div />").addClass("ui-dialog-draggable-handle").css("cursor", "move").height(5);
+            $(this.element[0]).dialog("widget").prepend(handle).draggable("option", "handle", handle);
+          }
+          return $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").find(".ui-dialog-title").html("&nbsp;").end().css({
+            "background-color": "transparent",
+            "background-image": "none",
+            "border": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "z-index": 9999
+          }).end();
+        case "transparent":
+          return $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").css({
+            "background-color": "transparent",
+            "background-image": "none",
+            "border": 0
+          });
+        default:
+          return $.error("jQuery.dialogExtend Error : Invalid <titlebar> value '" + this.options.titlebar + "'");
+      }
     },
     state: function() {
       return this.state;
