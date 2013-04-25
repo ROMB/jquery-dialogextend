@@ -214,8 +214,8 @@ $.widget "ui.dialogExtend",
       @original_size_width = $(@element[0]).dialog("option", "width")
       @original_size_maxHeight = $(@element[0]).dialog("option", "maxHeight")
       @original_position_mode = $(@element[0]).dialog("widget").css("position")
-      @original_position_left = $(@element[0]).dialog("widget").offset().left
-      @original_position_top = $(@element[0]).dialog("widget").offset().top
+      @original_position_left = $(@element[0]).dialog("widget").offset().left-$('body').scrollLeft()
+      @original_position_top = $(@element[0]).dialog("widget").offset().top-$('body').scrollTop()
       @original_titlebar_wrap = $(@element[0]).dialog("widget").find(".ui-dialog-titlebar").css("white-space")
 
   _loadSnapshot:()->

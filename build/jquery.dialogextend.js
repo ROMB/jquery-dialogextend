@@ -199,8 +199,8 @@
         this.original_size_width = $(this.element[0]).dialog("option", "width");
         this.original_size_maxHeight = $(this.element[0]).dialog("option", "maxHeight");
         this.original_position_mode = $(this.element[0]).dialog("widget").css("position");
-        this.original_position_left = $(this.element[0]).dialog("widget").offset().left;
-        this.original_position_top = $(this.element[0]).dialog("widget").offset().top;
+        this.original_position_left = $(this.element[0]).dialog("widget").offset().left - $('body').scrollLeft();
+        this.original_position_top = $(this.element[0]).dialog("widget").offset().top - $('body').scrollTop();
         return this.original_titlebar_wrap = $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").css("white-space");
       }
     },
