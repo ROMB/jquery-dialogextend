@@ -362,10 +362,11 @@
         "draggable": original.config.draggable,
         "height": original.size.height,
         "width": original.size.width,
-        "maxHeight": original.size.maxHeight
-      }).dialog("widget").offset({
-        top: original.position.top,
-        left: original.position.left
+        "maxHeight": original.size.maxHeight,
+        "position": {
+          my: "left top",
+          at: "left+" + original.position.left + " top+" + original.position.top
+        }
       });
       if ($(this.element[0]).dialog("option", "draggable")) {
         return $(this.element[0]).dialog("widget").draggable("option", "handle", $(this.element[0]).dialog("widget").find(".ui-dialog-draggable-handle").length ? $(this.element[0]).dialog("widget").find(".ui-dialog-draggable-handle") : ".ui-dialog-titlebar").find(".ui-dialog-draggable-handle").css("cursor", "move");

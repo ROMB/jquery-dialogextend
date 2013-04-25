@@ -74,11 +74,9 @@ $.extend true,$.ui.dialogExtend.prototype,
         "height" : original.size.height
         "width" : original.size.width
         "maxHeight" : original.size.maxHeight
-      )
-      # restore position *AFTER* size restored
-      .dialog("widget").offset(
-        top: original.position.top
-        left: original.position.left 
+        "position" :
+          my: "left top"
+          at: "left+"+original.position.left+" top+"+original.position.top
       )
       # restore draggable-handle (for <titlebar=none> only)
       if $(@element[0]).dialog("option","draggable")
