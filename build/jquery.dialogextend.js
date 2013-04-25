@@ -507,6 +507,8 @@
       }
     },
     _minimize_removeOverlay: function() {
+      $(this).dialogExtend("restore");
+      $(this).dialog("widget").appendTo($('body'));
       $(this).data("dialog-extend-minimize-overlay").remove();
       return $(this).removeData("dialog-extend-overlay");
     }

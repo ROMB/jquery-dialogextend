@@ -159,5 +159,7 @@ $.extend true,$.ui.dialogExtend.prototype,
       @options.minimizeLocation = "left"
   
   _minimize_removeOverlay:()->
+    $(@).dialogExtend("restore")
+    $(@).dialog("widget").appendTo($('body'))
     $(@).data("dialog-extend-minimize-overlay").remove()
     $(@).removeData("dialog-extend-overlay")
