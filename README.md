@@ -1,4 +1,4 @@
-jquery-dialogextend 1.0.2 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
+jquery-dialogextend 2.0.0 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
 ===
 
 Compatible
@@ -31,20 +31,33 @@ Tested Browsers
 Options
 ===
 
-#### close <sup>(new in v1.0.1)</sup> ####
+#### closable ####
 Type: *Boolean*
+
+Usage: enable/disable close button
 
 Default: *true*
 
 
-#### maximize ####
+#### maximizable ####
 Type: *Boolean*
+
+Usage: enable/disable maximize button
 
 Default: *false*
 
-#### minimize ####
+#### minimizable ####
 
 Type: *Boolean*
+
+Usage: enable/disable minimize button
+
+Default: *false*
+
+#### collapsable ####
+Type: *Boolean*
+
+Usage: enable/disable collapse button
 
 Default: *false*
 
@@ -59,6 +72,8 @@ Valid: *'left'*, *'right'*
 #### dblclick ####
 
 Type: *Boolean*, *String*
+
+Usage: set action on double click
 
 Default: *false*
 
@@ -262,7 +277,7 @@ Example:
 
 	$("#my-dialog").dialogExtend("restore");
 
-#### state (new in v1.0.1) ####
+#### state ####
 
 Usage: Get current state of dialog
 
@@ -271,6 +286,7 @@ Return: *String*
 Value: *'normal'*, *'maximized'*, *'minimized'*, *'collapsed'*
 
 Example:
+
 	switch ( $("#my-dialog").dialogExtend("state") ) {
 	  case "maximized":
 	    alert("The dialog is maximized");
@@ -315,7 +331,7 @@ Example - Basic Config
 	    $("<div>This is content</div>")
 	      .dialog({ "title" : "My Dialog" })
 	      .dialogExtend({
-	        "maximize" : true,
+	        "maximizable" : true,
 	        "dblclick" : "maximize",
 	        "icons" : { "maximize" : "ui-icon-arrow-4-diag" }
 	      });
@@ -332,15 +348,16 @@ Example - Full Config
 	       })
 	      .dialogExtend({
 	        "close" : true,
-	        "maximize" : true,
-	        "minimize" : true,
-	        "minimizeLocation" : "right",
+	        "maximizable" : true,
+	        "minimizable" : true,
+	        "collapsable" : true,
 	        "dblclick" : "collapse",
 	        "titlebar" : "transparent",
 	        "icons" : {
 	          "close" : "ui-icon-circle-close",
 	          "maximize" : "ui-icon-circle-plus",
 	          "minimize" : "ui-icon-circle-minus",
+	          "collapse" : "ui-icon-triangle-1-s",
 	          "restore" : "ui-icon-bullet"
 	        },
 	        "events" : {

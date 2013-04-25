@@ -1,3 +1,8 @@
+2.0.0 / 2013-04-25
+===
+- make plugin be more modular
+- now jquery.ui plugin
+
 1.0.2 / 2013-04-24
 ===
 
