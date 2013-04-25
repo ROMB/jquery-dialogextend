@@ -40,9 +40,12 @@ $.widget "ui.dialogExtend",
       $.error "jQuery.dialogExtend Error : Invalid <dblclick> value '" + @options.dblclick + "'"
       @options.dblclick = false
     # check <titlebar> option
-    if @options.titlebar and @options.titlebar  not in ["none","transparent"]
+    if @options.titlebar and @options.titlebar not in ["none","transparent"]
       $.error "jQuery.dialogExtend Error : Invalid <titlebar> value '" + @options.titlebar + "'"
       @options.titlebar = false;
+    # check modules options
+    for name of @modes
+      if @["_verifyOptions_"+name] then @["_verifyOptions_"+name]()
   
   _initStyles:()->
     if not $(".dialog-extend-css").length

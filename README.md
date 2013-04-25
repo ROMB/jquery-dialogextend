@@ -65,6 +65,8 @@ Default: *false*
 
 Type: *String*
 
+Usage: sets alignment of minimized dialogues
+
 Default: *'left'*
 
 Valid: *'left'*, *'right'*
@@ -357,6 +359,7 @@ Example - Full Config
 	          "close" : "ui-icon-circle-close",
 	          "maximize" : "ui-icon-circle-plus",
 	          "minimize" : "ui-icon-circle-minus",
+	          "minimizeLocation" : "right",
 	          "collapse" : "ui-icon-triangle-1-s",
 	          "restore" : "ui-icon-bullet"
 	        },

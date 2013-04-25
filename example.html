@@ -33,7 +33,7 @@
 <header>
 	<h1>jQuery DialogExtend Test Tool</h1>
 	<ul>
-		<li><strong>DialogExtend</strong> {version 1.0.1}</li>
+		<li><strong>DialogExtend</strong> {version 2.0.0}</li>
 		<li><strong>jQuery</strong> {version 1.9.1}</li>
 		<li><strong>jQueryUI</strong> {version 1.10.2}</li>
 	</ul>
@@ -123,6 +123,17 @@
 				<div>
 					<input type="radio" name="dblclick" id="dblclick-minimize" value="minimize" />
 					<label for="dblclick-minimize">minimize</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Minimize location</legend>
+				<div>
+					<input type="radio" name="minimizeLocation" id="minimizeLocation-left" value="left" checked="checked" />
+					<label for="minimizeLocation-left">left</label>
+				</div>
+				<div>
+					<input type="radio" name="minimizeLocation" id="minimizeLocation-right" value="right" />
+					<label for="minimizeLocation-left">right</label>
 				</div>
 			</fieldset>
 			<fieldset id="config-titlebar">
@@ -251,6 +262,7 @@ $(function(){
 			"closable" : $("#button-close").is(":checked"),
 			"maximizable" : $("#button-maximize").is(":checked"),
 			"minimizable" : $("#button-minimize").is(":checked"),
+      "minimizeLocation" : $("#my-form [name=minimizeLocation]:checked").val() || false,
 			"collapsable" : $("#button-collapse").is(":checked"),
 			"dblclick" : $("#my-form [name=dblclick]:checked").val() || false,
 			"titlebar" : $("#my-form [name=titlebar]:checked").val() || false

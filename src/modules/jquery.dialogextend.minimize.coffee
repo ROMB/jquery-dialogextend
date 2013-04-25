@@ -7,6 +7,7 @@ $.extend true,$.ui.dialogExtend.prototype,
       state:"minimized"
   options:
     "minimizable" : false
+    "minimizeLocation" : "left"
     "icons" :
       "minimize" : "ui-icon-minus"
     # callback
@@ -23,14 +24,15 @@ $.extend true,$.ui.dialogExtend.prototype,
     else
       fixedContainer = $('<div id="dialog-extend-fixed-container"></div>').appendTo("body")
     fixedContainer.css
-      "position" : "fixed",
-      "bottom" : 1,
-      "left" : 1,
+      "position" : "fixed"
+      "bottom" : 1
+      "left" : 1
+      "right" : 1
       "z-index" : 9999
     # WORKAROUND for http://bugs.jqueryui.com/ticket/8722
     overlay = $('<div/>').css
       # float is essential for stacking dialog when there are many many minimized dialogs
-      "float" : "left",
+      "float" : @options.minimizeLocation,
       "margin" : 1
     fixedContainer.append(overlay)
     $(@element[0]).data("dialog-extend-minimize-overlay",overlay)
@@ -152,6 +154,11 @@ $.extend true,$.ui.dialogExtend.prototype,
       style += '.ui-dialog .ui-dialog-titlebar-minimize:focus { padding: 0; }'
       style += '</style>'
       $(style).appendTo("body")
+  
+  _verifyOptions_minimize:()->
+    if not @options.minimizeLocation or @options.minimizeLocation not in ['left','right']
+      $.error( "jQuery.dialogExtend Error : Invalid <minimizeLocation> value '" + @options.minimizeLocation + "'" )
+      @options.minimizeLocation = "left"
   
   _minimize_removeOverlay:()->
     $(@).data("dialog-extend-minimize-overlay").remove()
