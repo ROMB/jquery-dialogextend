@@ -111,137 +111,129 @@ Default:
 
 Valid: *&lt;jQuery UI icon class&gt;*
 
-
-
-#### events ####
-
-Type: *Object*
-
-Valid: *&lt;Refer to Events section below&gt;*
-
 Events
 ===
 
 #### load ####
 
-Type: *load.dialogExtend*
+Type: *load*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "load" : function(evt, dlg) { ... } }
+	  "load" : function(evt, dlg) { ... }
 	});
 	//Bind to event by type
-	//NOTE : You must bind() the <load.dialogExtend> event before dialog-extend is created
+	//NOTE : You must bind() the <dialogextendload> event before dialog-extend is created
 	$("#my-dialog")
-	  .bind("load.dialogExtend", function(evt, dlg) { ... })
+	  .bind("dialogextendload", function(evt) { ... })
 	  .dialogExtend();
 
 
 #### beforeCollapse ####
 
-Type: *beforeCollapse.dialogExtend*
+Type: *beforeCollapse*
 
 Example:
 
     //Specify callback as init option
     $("#my-dialog").dialogExtend({
-      "events" : { "beforeCollapse" : function(evt, dlg) { ... } }
+      "beforeCollapse" : function(evt) { ... }
     });
     //Bind to event by type
-    $("#my-dialog").bind("beforeCollapse.dialogExtend", function(evt, dlg) { ... });
+    $("#my-dialog").bind("dialogextendbeforeCollapse", function(evt) { ... });
 
 #### beforeMaximize ####
 
-Type: *beforeMaximize.dialogExtend*
+Type: *beforeMaximize*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "beforeMaximize" : function(evt, dlg) { ... } }
+	  "beforeMaximize" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("beforeMaximize.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendbeforeMaximize", function(evt) { ... });
 
 #### beforeMinimize ####
 
-Type: *beforeMinimize.dialogExtend*
+Type: *beforeMinimize*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "beforeMinimize" : function(evt, dlg) { ... } }
+	  "beforeMinimize" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("beforeMinimize.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendbeforeMinimize", function(evt) { ... });
 
 #### beforeRestore ####
 
-Type: *beforeRestore.dialogExtend*
+Type: *beforeRestore*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "beforeRestore" : function(evt, dlg) { ... } }
+	  "beforeRestore" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("beforeRestore.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendbeforeRestore", function(evt) { ... });
 
 #### collapse ####
 
-Type: *collapse.dialogExtend*
+Type: *collapse*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "collapse" : function(evt, dlg) { ... } }
+	  "collapse" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("collapse.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendcollapse", function(evt) { ... });
 
 #### maximize ####
 
-Type: *maximize.dialogExtend*
+Type: *maximize*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "maximize" : function(evt, dlg) { ... } }
+	  "maximize" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("maximize.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendmaximize", function(evt) { ... });
 
 #### minimize ####
 
-Type: *minimize.dialogExtend*
+Type: *minimize*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "minimize" : function(evt, dlg) { ... } }
+	  "minimize" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("minimize.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendminimize", function(evt) { ... });
 
 #### restore ####
 
-Type: *restore.dialogExtend*
+Type: *restore*
 
 Example:
 
 	//Specify callback as init option
 	$("#my-dialog").dialogExtend({
-	  "events" : { "restore" : function(evt, dlg) { ... } }
+	  "restore" : function(evt) { ... }
 	});
 	//Bind to event by type
-	$("#my-dialog").bind("restore.dialogExtend", function(evt, dlg) { ... });
+	$("#my-dialog").bind("dialogextendrestore", function(evt) { ... });
 
 Methods
 ===
@@ -249,7 +241,7 @@ Methods
 
 Usage: Collapse the dialog without double-clicking the title bar
 
-Trigger: *beforeCollapse.dialogExtend*, *collapse.dialogExtend*
+Trigger: *dialogextendbeforeCollapse*, *dialogextendcollapse*
 
 Example:
 
@@ -258,7 +250,7 @@ Example:
 
 Usage: Maximize the dialog without clicking the button
 
-Trigger: *beforeMaximize.dialogExtend*, *maximize.dialogExtend*
+Trigger: *dialogextendbeforeMaximize*, *dialogextendmaximize*
 
 Example:
 
@@ -268,7 +260,7 @@ Example:
 
 Usage: Minimize the dialog without clicking the button
 
-Trigger: *beforeMinimize.dialogExtend*, *minimize.dialogExtend*
+Trigger: *dialogextendbeforeMinimize*, *dialogextendminimize*
 
 Example:
 
@@ -278,7 +270,7 @@ Example:
 
 Usage: Restore the dialog from maximized/minimized/collapsed state without clicking the button
 
-Trigger: *beforeRestore.dialogExtend*, *restore.dialogExtend*
+Trigger: *dialogextendbeforeRestore*, *dialogextendrestore*
 
 Example:
 
