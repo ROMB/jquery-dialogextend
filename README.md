@@ -346,31 +346,29 @@ Example - Full Config
 	        "buttons" : { "OK" : function(){ $(this).dialog("close"); } }
 	       })
 	      .dialogExtend({
-	        "close" : true,
+	        "closable" : true,
 	        "maximizable" : true,
 	        "minimizable" : true,
 	        "collapsable" : true,
 	        "dblclick" : "collapse",
 	        "titlebar" : "transparent",
+	        "minimizeLocation" : "right",
 	        "icons" : {
 	          "close" : "ui-icon-circle-close",
 	          "maximize" : "ui-icon-circle-plus",
 	          "minimize" : "ui-icon-circle-minus",
-	          "minimizeLocation" : "right",
 	          "collapse" : "ui-icon-triangle-1-s",
 	          "restore" : "ui-icon-bullet"
 	        },
-	        "events" : {
-	          "load" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "beforeCollapse" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "beforeMaximize" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "beforeMinimize" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "beforeRestore" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "collapse" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "maximize" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "minimize" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); },
-	          "restore" : function(evt, dlg){ alert(evt.type+"."+evt.handleObj.namespace); }
-	        }
+	        "load" : function(evt, dlg){ alert(evt.type); },
+	        "beforeCollapse" : function(evt, dlg){ alert(evt.type); },
+	        "beforeMaximize" : function(evt, dlg){ alert(evt.type); },
+	        "beforeMinimize" : function(evt, dlg){ alert(evt.type); },
+	        "beforeRestore" : function(evt, dlg){ alert(evt.type); },
+	        "collapse" : function(evt, dlg){ alert(evt.type); },
+	        "maximize" : function(evt, dlg){ alert(evt.type); },
+	        "minimize" : function(evt, dlg){ alert(evt.type); },
+	        "restore" : function(evt, dlg){ alert(evt.type); }
 	      });
 	  });
 	});
