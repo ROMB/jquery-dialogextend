@@ -193,7 +193,7 @@
       if (this.state === "normal") {
         this.original_config_resizable = $(this.element[0]).dialog("option", "resizable");
         this.original_config_draggable = $(this.element[0]).dialog("option", "draggable");
-        this.original_size_height = $(this.element[0]).dialog("widget").height();
+        this.original_size_height = $(this.element[0]).dialog("widget").outerHeight();
         this.original_size_width = $(this.element[0]).dialog("option", "width");
         this.original_size_maxHeight = $(this.element[0]).dialog("option", "maxHeight");
         this.original_position_mode = $(this.element[0]).dialog("widget").css("position");

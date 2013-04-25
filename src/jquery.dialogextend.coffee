@@ -209,7 +209,7 @@ $.widget "ui.dialogExtend",
     if @state is "normal" 
       @original_config_resizable = $(@element[0]).dialog("option", "resizable")
       @original_config_draggable = $(@element[0]).dialog("option", "draggable")
-      @original_size_height = $(@element[0]).dialog("widget").height()
+      @original_size_height = $(@element[0]).dialog("widget").outerHeight()
       @original_size_width = $(@element[0]).dialog("option", "width")
       @original_size_maxHeight = $(@element[0]).dialog("option", "maxHeight")
       @original_position_mode = $(@element[0]).dialog("widget").css("position")
