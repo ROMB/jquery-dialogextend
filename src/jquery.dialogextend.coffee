@@ -203,7 +203,8 @@ $.widget "ui.dialogExtend",
     @_trigger "restore"
   
   _restore:()->
-    @["_restore_"+@_state]()
+    unless @_state is "normal"
+      @["_restore_"+@_state]()
   
   _saveSnapshot:()->
     if @_state is "normal" 

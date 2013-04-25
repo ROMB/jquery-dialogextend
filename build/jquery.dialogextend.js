@@ -187,7 +187,9 @@
       return this._trigger("restore");
     },
     _restore: function() {
-      return this["_restore_" + this._state]();
+      if (this._state !== "normal") {
+        return this["_restore_" + this._state]();
+      }
     },
     _saveSnapshot: function() {
       if (this._state === "normal") {
