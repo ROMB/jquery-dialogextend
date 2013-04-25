@@ -20,7 +20,7 @@ $.extend true,$.ui.dialogExtend.prototype,
     # trigger custom event
     @_trigger "beforeMaximize"
     # restore to normal state first (when necessary)
-    if @state != "normal"
+    unless @_state is "normal"
       @_restore()
     # remember original state
     @_saveSnapshot()

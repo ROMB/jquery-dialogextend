@@ -19,7 +19,7 @@
       "restore": null
     },
     _create: function() {
-      this.state = "normal";
+      this._state = "normal";
       if (!$(this.element[0]).data("ui-dialog")) {
         $.error("jQuery.dialogExtend Error : Only jQuery UI Dialog element is accepted");
       }
@@ -34,8 +34,8 @@
       return this._trigger("load");
     },
     _setState: function(state) {
-      $(this.element[0]).removeClass("ui-dialog-" + this.state).addClass("ui-dialog-" + state);
-      return this.state = state;
+      $(this.element[0]).removeClass("ui-dialog-" + this._state).addClass("ui-dialog-" + state);
+      return this._state = state;
     },
     _verifyOptions: function() {
       var name, _ref, _results;
@@ -118,7 +118,7 @@
       }
       return titlebar.dblclick(function(evt) {
         if (_this.options.dblclick) {
-          if (_this.state !== "normal") {
+          if (_this._state !== "normal") {
             return _this.restore();
           } else {
             return _this[_this.options.dblclick]();
@@ -177,7 +177,7 @@
       }
     },
     state: function() {
-      return this.state;
+      return this._state;
     },
     restore: function() {
       this._trigger("beforeRestore");
@@ -187,10 +187,10 @@
       return this._trigger("restore");
     },
     _restore: function() {
-      return this["_restore_" + this.state]();
+      return this["_restore_" + this._state]();
     },
     _saveSnapshot: function() {
-      if (this.state === "normal") {
+      if (this._state === "normal") {
         this.original_config_resizable = $(this.element[0]).dialog("option", "resizable");
         this.original_config_draggable = $(this.element[0]).dialog("option", "draggable");
         this.original_size_height = $(this.element[0]).dialog("widget").outerHeight();
@@ -226,14 +226,14 @@
     _toggleButtons: function() {
       var mode, name, _ref, _results;
 
-      $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-restore").toggle(this.state !== "normal").css({
+      $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-restore").toggle(this._state !== "normal").css({
         "right": "1.4em"
       }).end();
       _ref = this.modes;
       _results = [];
       for (name in _ref) {
         mode = _ref[name];
-        _results.push($(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-" + name).toggle(this.state !== mode.state && this.options[mode.option]));
+        _results.push($(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-" + name).toggle(this._state !== mode.state && this.options[mode.option]));
       }
       return _results;
     }
@@ -330,7 +330,7 @@
       newHeight = $(window).height() - 11;
       newWidth = $(window).width() - 11;
       this._trigger("beforeMaximize");
-      if (this.state !== "normal") {
+      if (this._state !== "normal") {
         this._restore();
       }
       this._saveSnapshot();

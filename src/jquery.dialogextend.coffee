@@ -17,7 +17,7 @@ $.widget "ui.dialogExtend",
     "restore" : null
 
   _create: ()->
-    @state = "normal"
+    @_state = "normal"
     if not $(@element[0]).data "ui-dialog"
       $.error "jQuery.dialogExtend Error : Only jQuery UI Dialog element is accepted" 
     @_verifyOptions()
@@ -31,9 +31,9 @@ $.widget "ui.dialogExtend",
   
   _setState: (state)->
     $(@element[0])
-    .removeClass("ui-dialog-"+@state)
+    .removeClass("ui-dialog-"+@_state)
     .addClass("ui-dialog-"+state)
-    @state = state
+    @_state = state
   
   _verifyOptions: ()->
     # check <dblckick> option
@@ -122,7 +122,7 @@ $.widget "ui.dialogExtend",
       # on-dblclick-titlebar
       .dblclick((evt)=>
         if @options.dblclick
-          if @state != "normal"
+          if @_state != "normal"
             @restore()
           else
             @[@options.dblclick]()
@@ -189,7 +189,7 @@ $.widget "ui.dialogExtend",
           $.error( "jQuery.dialogExtend Error : Invalid <titlebar> value '" + @options.titlebar + "'" );
 
   state:()->
-    return @state
+    return @_state
 
   restore:()->
     # trigger custom event
@@ -203,10 +203,10 @@ $.widget "ui.dialogExtend",
     @_trigger "restore"
   
   _restore:()->
-    @["_restore_"+@state]()
+    @["_restore_"+@_state]()
   
   _saveSnapshot:()->
-    if @state is "normal" 
+    if @_state is "normal" 
       @original_config_resizable = $(@element[0]).dialog("option", "resizable")
       @original_config_draggable = $(@element[0]).dialog("option", "draggable")
       @original_size_height = $(@element[0]).dialog("widget").outerHeight()
@@ -237,10 +237,10 @@ $.widget "ui.dialogExtend",
   _toggleButtons:()->
     $(@element[0]).dialog("widget")
       .find(".ui-dialog-titlebar-restore")
-        .toggle( @state != "normal" )
+        .toggle( @_state != "normal" )
         .css({ "right" : "1.4em" })
       .end()
     for name,mode of @modes
       $(@element[0]).dialog("widget")
       .find(".ui-dialog-titlebar-"+name)
-      .toggle( @state != mode.state && @options[mode.option] )
+      .toggle( @_state != mode.state && @options[mode.option] )
