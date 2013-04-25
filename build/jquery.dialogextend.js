@@ -182,7 +182,7 @@
     restore: function() {
       this._trigger("beforeRestore");
       this._restore();
-      this.state = "normal";
+      this._setState("normal");
       this._toggleButtons();
       return this._trigger("restore");
     },
@@ -272,7 +272,7 @@
         "height": newHeight,
         "maxHeight": newHeight
       }).hide().dialog("widget").find(".ui-dialog-buttonpane:visible").hide().end().find(".ui-dialog-titlebar").css("white-space", "nowrap").end().find(".ui-dialog-content");
-      this.state = "collapsed";
+      this._setState("collapsed");
       this._toggleButtons();
       return this._trigger("collapse");
     },
@@ -347,7 +347,7 @@
           at: "left top"
         }
       });
-      this.state = "maximized";
+      this._setState("maximized");
       this._toggleButtons();
       return this._trigger("maximize");
     },
@@ -452,7 +452,7 @@
           'width': titlebar.width() - buttonPane.width() + 10
         });
       }).end().find(".ui-dialog-content").hide().dialog("widget").find(".ui-dialog-buttonpane:visible").hide().end().find(".ui-dialog-titlebar").css("white-space", "nowrap").end().find(".ui-dialog-content");
-      this.state = "minimized";
+      this._setState("minimized");
       this._toggleButtons();
       return this._trigger("minimize");
     },

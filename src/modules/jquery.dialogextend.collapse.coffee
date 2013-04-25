@@ -36,7 +36,7 @@ $.extend true,$.ui.dialogExtend.prototype,
         .find(".ui-dialog-titlebar").css("white-space", "nowrap").end()
       .find(".ui-dialog-content")
       # mark new state
-      @state = "collapsed"
+      @_setState "collapsed"
       # modify dialog buttons according to new state
       @_toggleButtons()
       # trigger custom event

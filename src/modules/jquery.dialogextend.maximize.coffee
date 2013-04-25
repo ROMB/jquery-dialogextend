@@ -52,7 +52,7 @@ $.extend true,$.ui.dialogExtend.prototype,
             at: "left top"
       )
       # mark new state
-      @state = "maximized"
+      @_setState "maximized"
       # modify dialog buttons according to new state
       @_toggleButtons()
       # trigger custom event

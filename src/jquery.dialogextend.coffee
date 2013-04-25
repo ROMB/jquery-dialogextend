@@ -196,7 +196,7 @@ $.widget "ui.dialogExtend",
     @_trigger "beforeRestore"
     @_restore()
     # mark new state ===> must set state *AFTER* restore because '_restore' will check 'beforeState'
-    @state = "normal"
+    @_setState "normal"
     # modify dialog buttons according to new state
     @_toggleButtons()
     # trigger custom event

@@ -83,7 +83,7 @@ $.extend true,$.ui.dialogExtend.prototype,
       .find(".ui-dialog-titlebar").css("white-space", "nowrap").end()
     .find(".ui-dialog-content")
     # mark new state
-    @state = "minimized"
+    @_setState "minimized"
     # modify dialog button according to new state
     @_toggleButtons()
     # trigger custom event
