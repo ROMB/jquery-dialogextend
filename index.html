@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Jquery-dialogextend by ROMB</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Jquery-dialogextend</h1>
+        <h2>jQuery DialogExtend Plugin - Maximize and Minimize Buttons for UI Dialog</h2>
+        <a href="https://github.com/ROMB/jquery-dialogextend" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>jquery-dialogextend 2.0.1 <a href="http://stillmaintained.com/ROMB/jquery-dialogextend"><img src="http://stillmaintained.com/ROMB/jquery-dialogextend.png" alt="project status"></a>
+</h1>
+
+<h1>Download</h1>
+
+<p><a href="https://raw.github.com/ROMB/jquery-dialogextend/master/build/jquery.dialogextend.js">development build</a></p>
+
+<p><a href="https://raw.github.com/ROMB/jquery-dialogextend/master/build/jquery.dialogextend.min.js">minified library</a></p>
+
+<h1>Compatible</h1>
+
+<ul>
+<li>jQuery 1.9.1</li>
+<li>jQueryUI 1.10.2</li>
+</ul><h1>Overview</h1>
+
+<ul>
+<li>Neat, simple, and ABSOLUTELY unobtrusive</li>
+<li>Extending (instead of replacing) original jQuery UI dialog</li>
+<li>Maximize and minimize buttons</li>
+<li>Show/Hide close button</li>
+<li>Double-clickable title bar</li>
+<li>Enhanced title bar options</li>
+<li>Configurable icons</li>
+<li>Custom events</li>
+</ul><h1>Demo</h1>
+
+<ul>
+<li>Test Tool : <a href="http://jsbin.com/ehagoy/154/">http://jsbin.com/ehagoy/154/</a>
+</li>
+<li><em>Stylesheet of JSBin seems to ruin test tool in IE8. Other browsers are fine.</em></li>
+</ul><h1>Tested Browsers</h1>
+
+<ul>
+<li>Chrome 20</li>
+<li>Firefox 14</li>
+<li>IE 8</li>
+</ul><h1>Options</h1>
+
+<h4>closable</h4>
+
+<p>Type: <em>Boolean</em></p>
+
+<p>Usage: enable/disable close button</p>
+
+<p>Default: <em>true</em></p>
+
+<h4>maximizable</h4>
+
+<p>Type: <em>Boolean</em></p>
+
+<p>Usage: enable/disable maximize button</p>
+
+<p>Default: <em>false</em></p>
+
+<h4>minimizable</h4>
+
+<p>Type: <em>Boolean</em></p>
+
+<p>Usage: enable/disable minimize button</p>
+
+<p>Default: <em>false</em></p>
+
+<h4>collapsable</h4>
+
+<p>Type: <em>Boolean</em></p>
+
+<p>Usage: enable/disable collapse button</p>
+
+<p>Default: <em>false</em></p>
+
+<h4>minimizeLocation</h4>
+
+<p>Type: <em>String</em></p>
+
+<p>Usage: sets alignment of minimized dialogues</p>
+
+<p>Default: <em>'left'</em></p>
+
+<p>Valid: <em>'left'</em>, <em>'right'</em></p>
+
+<h4>dblclick</h4>
+
+<p>Type: <em>Boolean</em>, <em>String</em></p>
+
+<p>Usage: set action on double click</p>
+
+<p>Default: <em>false</em></p>
+
+<p>Valid: <em>false</em>, <em>'maximize'</em>, <em>'minimize'</em>, <em>'collapse'</em></p>
+
+<h4>titlebar</h4>
+
+<p>Type: <em>Boolean</em>, <em>String</em></p>
+
+<p>Default: <em>false</em></p>
+
+<p>Valid: <em>false</em>, <em>'none'</em>, <em>'transparent'</em></p>
+
+<h4>icons</h4>
+
+<p>Type: <em>Object</em></p>
+
+<p>Default:</p>
+
+<pre><code>{
+  "close" : "ui-icon-circle-closethick", // new in v1.0.1
+  "maximize" : "ui-icon-extlink",
+  "minimize" : "ui-icon-minus",
+  "restore" : "ui-icon-newwin"
+}
+</code></pre>
+
+<p>Valid: <em>&lt;jQuery UI icon class&gt;</em></p>
+
+<h1>Events</h1>
+
+<h4>load</h4>
+
+<p>Type: <em>load</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "load" : function(evt, dlg) { ... }
+});
+//Bind to event by type
+//NOTE : You must bind() the &lt;dialogextendload&gt; event before dialog-extend is created
+$("#my-dialog")
+  .bind("dialogextendload", function(evt) { ... })
+  .dialogExtend();
+</code></pre>
+
+<h4>beforeCollapse</h4>
+
+<p>Type: <em>beforeCollapse</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "beforeCollapse" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendbeforeCollapse", function(evt) { ... });
+</code></pre>
+
+<h4>beforeMaximize</h4>
+
+<p>Type: <em>beforeMaximize</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "beforeMaximize" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendbeforeMaximize", function(evt) { ... });
+</code></pre>
+
+<h4>beforeMinimize</h4>
+
+<p>Type: <em>beforeMinimize</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "beforeMinimize" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendbeforeMinimize", function(evt) { ... });
+</code></pre>
+
+<h4>beforeRestore</h4>
+
+<p>Type: <em>beforeRestore</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "beforeRestore" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendbeforeRestore", function(evt) { ... });
+</code></pre>
+
+<h4>collapse</h4>
+
+<p>Type: <em>collapse</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "collapse" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendcollapse", function(evt) { ... });
+</code></pre>
+
+<h4>maximize</h4>
+
+<p>Type: <em>maximize</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "maximize" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendmaximize", function(evt) { ... });
+</code></pre>
+
+<h4>minimize</h4>
+
+<p>Type: <em>minimize</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "minimize" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendminimize", function(evt) { ... });
+</code></pre>
+
+<h4>restore</h4>
+
+<p>Type: <em>restore</em></p>
+
+<p>Example:</p>
+
+<pre><code>//Specify callback as init option
+$("#my-dialog").dialogExtend({
+  "restore" : function(evt) { ... }
+});
+//Bind to event by type
+$("#my-dialog").bind("dialogextendrestore", function(evt) { ... });
+</code></pre>
+
+<h1>Methods</h1>
+
+<h4>collapse</h4>
+
+<p>Usage: Collapse the dialog without double-clicking the title bar</p>
+
+<p>Trigger: <em>dialogextendbeforeCollapse</em>, <em>dialogextendcollapse</em></p>
+
+<p>Example:</p>
+
+<pre><code>$("#my-dialog").dialogExtend("collapse");
+</code></pre>
+
+<h4>maximize</h4>
+
+<p>Usage: Maximize the dialog without clicking the button</p>
+
+<p>Trigger: <em>dialogextendbeforeMaximize</em>, <em>dialogextendmaximize</em></p>
+
+<p>Example:</p>
+
+<pre><code>$("#my-dialog").dialogExtend("maximize");
+</code></pre>
+
+<h4>minimize</h4>
+
+<p>Usage: Minimize the dialog without clicking the button</p>
+
+<p>Trigger: <em>dialogextendbeforeMinimize</em>, <em>dialogextendminimize</em></p>
+
+<p>Example:</p>
+
+<pre><code>$("#my-dialog").dialogExtend("minimize");
+</code></pre>
+
+<h4>restore</h4>
+
+<p>Usage: Restore the dialog from maximized/minimized/collapsed state without clicking the button</p>
+
+<p>Trigger: <em>dialogextendbeforeRestore</em>, <em>dialogextendrestore</em></p>
+
+<p>Example:</p>
+
+<pre><code>$("#my-dialog").dialogExtend("restore");
+</code></pre>
+
+<h4>state</h4>
+
+<p>Usage: Get current state of dialog</p>
+
+<p>Return: <em>String</em></p>
+
+<p>Value: <em>'normal'</em>, <em>'maximized'</em>, <em>'minimized'</em>, <em>'collapsed'</em></p>
+
+<p>Example:</p>
+
+<pre><code>switch ( $("#my-dialog").dialogExtend("state") ) {
+  case "maximized":
+    alert("The dialog is maximized");
+    break;
+  case "minimized":
+    alert("The dialog is minimized");
+    break;
+  case "collapsed":
+    alert("The dialog is collapsed");
+    break;
+  default:
+    alert("The dialog is normal");
+}
+</code></pre>
+
+<h1>Theming</h1>
+
+<p>The dialog will have class according to its current state.</p>
+
+<pre><code>&lt;div class="ui-dialog"&gt;
+  &lt;div class="ui-dialog-titlebar"&gt;...&lt;/div&gt;
+  &lt;div class="ui-dialog-content ui-dialog-{normal|maximized|minimized|collapsed}"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>The buttons are wrapped by title bar of jQuery UI Dialog.</p>
+
+<p><em>Note : After using dialogExtend, close button will not be a direct child of title bar anymore. It will be wrapped by a button pane element</em></p>
+
+<pre><code>&lt;div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"&gt;
+  ...
+  &lt;div class="ui-dialog-titlebar-buttonpane"&gt;
+    &lt;a class="ui-dialog-titlebar-close ui-corner-all" href="#"&gt;...&lt;/a&gt;
+    &lt;a class="ui-dialog-titlebar-maximize ui-corner-all" href="#"&gt;&lt;span class="ui-icon {icons.maximize}"&gt;maximize&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="ui-dialog-titlebar-minimize ui-corner-all" href="#"&gt;&lt;span class="ui-icon {icons.minimize}"&gt;minimize&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="ui-dialog-titlebar-restore ui-corner-all" href="#"&gt;&lt;span class="ui-icon {icons.restore}"&gt;restore&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
+<h1>Example - Basic Config</h1>
+
+<pre><code>$(function(){
+  $("#my-button").click(function(){
+    $("&lt;div&gt;This is content&lt;/div&gt;")
+      .dialog({ "title" : "My Dialog" })
+      .dialogExtend({
+        "maximizable" : true,
+        "dblclick" : "maximize",
+        "icons" : { "maximize" : "ui-icon-arrow-4-diag" }
+      });
+  });
+});
+</code></pre>
+
+<h1>Example - Full Config</h1>
+
+<pre><code>$(function(){
+  $("#my-button").click(function(){
+    $("&lt;div&gt;This is  content&lt;/div&gt;")
+      .dialog({
+        "title" : "This is dialog title",
+        "buttons" : { "OK" : function(){ $(this).dialog("close"); } }
+       })
+      .dialogExtend({
+        "closable" : true,
+        "maximizable" : true,
+        "minimizable" : true,
+        "collapsable" : true,
+        "dblclick" : "collapse",
+        "titlebar" : "transparent",
+        "minimizeLocation" : "right",
+        "icons" : {
+          "close" : "ui-icon-circle-close",
+          "maximize" : "ui-icon-circle-plus",
+          "minimize" : "ui-icon-circle-minus",
+          "collapse" : "ui-icon-triangle-1-s",
+          "restore" : "ui-icon-bullet"
+        },
+        "load" : function(evt, dlg){ alert(evt.type); },
+        "beforeCollapse" : function(evt, dlg){ alert(evt.type); },
+        "beforeMaximize" : function(evt, dlg){ alert(evt.type); },
+        "beforeMinimize" : function(evt, dlg){ alert(evt.type); },
+        "beforeRestore" : function(evt, dlg){ alert(evt.type); },
+        "collapse" : function(evt, dlg){ alert(evt.type); },
+        "maximize" : function(evt, dlg){ alert(evt.type); },
+        "minimize" : function(evt, dlg){ alert(evt.type); },
+        "restore" : function(evt, dlg){ alert(evt.type); }
+      });
+  });
+});
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ROMB/jquery-dialogextend/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ROMB/jquery-dialogextend/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ROMB/jquery-dialogextend"></a> is maintained by <a href="https://github.com/ROMB">ROMB</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
