@@ -1,3 +1,7 @@
+2.0.2 /2013-05-01
+
+- published on jquery plugins
+
 2.0.1 / 2013-04-26
 ===
 
