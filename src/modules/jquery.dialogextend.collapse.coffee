@@ -18,6 +18,9 @@ $.extend true,$.ui.dialogExtend.prototype,
     # start!
     # trigger custom event
     @_trigger "beforeCollapse"
+    # restore to normal state first (when necessary)
+    unless @_state is "normal"
+      @_restore()
     # remember original state
     @_saveSnapshot()
     $(@element[0])

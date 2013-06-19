@@ -268,6 +268,9 @@
 
       newHeight = $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").height() + 15;
       this._trigger("beforeCollapse");
+      if (this._state !== "normal") {
+        this._restore();
+      }
       this._saveSnapshot();
       $(this.element[0]).dialog("option", {
         "resizable": false,
