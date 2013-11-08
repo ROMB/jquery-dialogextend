@@ -142,11 +142,20 @@ a.button small {
   display: block;
   font-size: 11px;
 }
-header a.button {
+header a.fork {
   position: absolute;
   right: 0;
   top: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
+}
+header a.donate {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  background-image: url("http://bitcoin.org/img/opengraph.png");
+  background-repeat: no-repeat;
+  background-position: 0px 10px;
+  background-size: 60px 60px;
 }
 aside a.button {
   width: 138px;
