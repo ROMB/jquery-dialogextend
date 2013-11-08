@@ -245,3 +245,13 @@ $.widget "ui.dialogExtend",
       $(@element[0]).dialog("widget")
       .find(".ui-dialog-titlebar-"+name)
       .toggle( @_state != mode.state && @options[mode.option] )
+    # place restore button after current state button
+    for name,mode of @modes
+      if mode.state is @_state
+        $(@element[0]).dialog("widget")
+          .find(".ui-dialog-titlebar-restore")
+            .insertAfter(
+              $(@element[0]).dialog("widget")
+              .find(".ui-dialog-titlebar-"+name)
+            )
+          .end()
