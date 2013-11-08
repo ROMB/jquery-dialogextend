@@ -33,6 +33,11 @@ Tested Browsers
 - Firefox 14
 - IE 8
 
+Please support this project
+===
+
+Donate Bitcoins: 1G8T7Xh2AN5ceduHmHT5TpPFUeddsnQHLQ
+
 Options
 ===
 
