@@ -1,4 +1,4 @@
-jquery-dialogextend 2.0.2 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend)
+jquery-dialogextend 2.0.3 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend) [![Build Status](https://travis-ci.org/ROMB/jquery-dialogextend.png?branch=master)](https://travis-ci.org/ROMB/jquery-dialogextend)
 ===
 Download
 ===

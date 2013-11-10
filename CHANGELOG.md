@@ -1,4 +1,11 @@
+2.0.3 /2013-11-10
+===
+
+- fix bug: order of titlebar buttons
+- fix bug: restore from collapse
+
 2.0.2 /2013-05-01
+===
 
 - published on jquery plugins
 
