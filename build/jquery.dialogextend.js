@@ -226,16 +226,25 @@
       };
     },
     _toggleButtons: function() {
-      var mode, name, _ref, _results;
+      var mode, name, _ref, _ref1, _results;
 
       $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-restore").toggle(this._state !== "normal").css({
         "right": "1.4em"
       }).end();
       _ref = this.modes;
-      _results = [];
       for (name in _ref) {
         mode = _ref[name];
-        _results.push($(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-" + name).toggle(this._state !== mode.state && this.options[mode.option]));
+        $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-" + name).toggle(this._state !== mode.state && this.options[mode.option]);
+      }
+      _ref1 = this.modes;
+      _results = [];
+      for (name in _ref1) {
+        mode = _ref1[name];
+        if (mode.state === this._state) {
+          _results.push($(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-restore").insertAfter($(this.element[0]).dialog("widget").find(".ui-dialog-titlebar-" + name)).end());
+        } else {
+          _results.push(void 0);
+        }
       }
       return _results;
     }
@@ -268,6 +277,9 @@
 
       newHeight = $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").height() + 15;
       this._trigger("beforeCollapse");
+      if (this._state !== "normal") {
+        this._restore();
+      }
       this._saveSnapshot();
       $(this.element[0]).dialog("option", {
         "resizable": false,
