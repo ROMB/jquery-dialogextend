@@ -61,10 +61,15 @@ $.extend true,$.ui.dialogExtend.prototype,
     for tab,i in @_tabs
       if tab.header is tabdata.header
         @_tabs.splice(i,1)
-        $(tab.header).parent().remove()
-        if @_tabs.length is 0
+        last = $(tab.header).parent().remove()
+        if @_tabs.length > 0
+          if last.hasClass('ui-dialog-title-tab-active')
+            widget = $(@element[0]).dialog('widget')
+            widget.find('.ui-dialog-titlebar').find('.ui-dialog-title-tab').first()
+              .addClass('ui-state-active ui-dialog-title-tab-active')
+              .data("ui-dialog-extend-tab").data.parent().show()
+        else
           $(@element[0]).dialog('close')
-          $(@element[0]).dialog('destroy')
         return header:tab.header,data:tab.data.remove()
     
   _initStyles_tabable:()->

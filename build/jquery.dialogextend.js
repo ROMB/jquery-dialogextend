@@ -636,17 +636,21 @@
       }
     },
     gettab: function(tabdata) {
-      var i, tab, _i, _len, _ref;
+      var i, last, tab, widget, _i, _len, _ref;
 
       _ref = this._tabs;
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
         tab = _ref[i];
         if (tab.header === tabdata.header) {
           this._tabs.splice(i, 1);
-          $(tab.header).parent().remove();
-          if (this._tabs.length === 0) {
+          last = $(tab.header).parent().remove();
+          if (this._tabs.length > 0) {
+            if (last.hasClass('ui-dialog-title-tab-active')) {
+              widget = $(this.element[0]).dialog('widget');
+              widget.find('.ui-dialog-titlebar').find('.ui-dialog-title-tab').first().addClass('ui-state-active ui-dialog-title-tab-active').data("ui-dialog-extend-tab").data.parent().show();
+            }
+          } else {
             $(this.element[0]).dialog('close');
-            $(this.element[0]).dialog('destroy');
           }
           return {
             header: tab.header,
