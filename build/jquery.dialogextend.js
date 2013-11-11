@@ -6,6 +6,7 @@
   $.widget("ui.dialogExtend", {
     version: "2.0.0",
     modes: {},
+    modules: {},
     options: {
       "closable": true,
       "dblclick": false,
@@ -27,10 +28,8 @@
       this._initStyles();
       this._initButtons();
       this._initTitleBar();
+      this._initModules();
       this._setState("normal");
-      this._on("load", function(e) {
-        return console.log("test", e);
-      });
       return this._trigger("load");
     },
     _setState: function(state) {
@@ -48,8 +47,13 @@
         $.error("jQuery.dialogExtend Error : Invalid <titlebar> value '" + this.options.titlebar + "'");
         this.options.titlebar = false;
       }
-      _results = [];
       for (name in this.modes) {
+        if (this["_verifyOptions_" + name]) {
+          this["_verifyOptions_" + name]();
+        }
+      }
+      _results = [];
+      for (name in this.modules) {
         if (this["_verifyOptions_" + name]) {
           _results.push(this["_verifyOptions_" + name]());
         } else {
@@ -73,8 +77,11 @@
         style += '</style>';
         $(style).appendTo("body");
       }
-      _results = [];
       for (name in this.modes) {
+        this["_initStyles_" + name]();
+      }
+      _results = [];
+      for (name in this.modules) {
         _results.push(this["_initStyles_" + name]());
       }
       return _results;
@@ -175,6 +182,19 @@
         default:
           return $.error("jQuery.dialogExtend Error : Invalid <titlebar> value '" + this.options.titlebar + "'");
       }
+    },
+    _initModules: function() {
+      var name, _results;
+
+      _results = [];
+      for (name in this.modules) {
+        if (this["_initModule_" + name]) {
+          _results.push(this["_initModule_" + name]());
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     },
     state: function() {
       return this._state;
@@ -526,6 +546,127 @@
       $(this).dialog("widget").appendTo($('body'));
       $(this).data("dialog-extend-minimize-overlay").remove();
       return $(this).removeData("dialog-extend-overlay");
+    }
+  });
+
+}).call(this);
+
+(function() {
+  var $;
+
+  $ = jQuery;
+
+  $.extend(true, $.ui.dialogExtend.prototype, {
+    modules: {
+      tabable: true
+    },
+    options: {
+      "tabable": false
+    },
+    _verifyOptions_tabable: function() {
+      if (this.options.titlebar === 'none') {
+        return $.error("jQuery.dialogExtend Error : Not supported tabble <titlebar> value '" + this.options.titlebar + "'");
+      }
+    },
+    _initModule_tabable: function() {
+      var data, header, titlebar, widget,
+        _this = this;
+
+      if (this.options.tabable) {
+        this._tabs = [];
+        widget = $(this.element[0]).dialog('widget');
+        titlebar = widget.find('.ui-dialog-titlebar');
+        titlebar.addClass('ui-dialog-titlebar-tabable');
+        header = widget.find('.ui-dialog-title').contents().remove();
+        widget.find('.ui-dialog-title').remove();
+        data = widget.find('.ui-dialog-content').contents().remove();
+        titlebar.droppable({
+          accept: ".ui-dialog-title-tab",
+          drop: function(event, ui) {
+            var parent, tab;
+
+            parent = ui.draggable.parent().parent();
+            if (parent[0] === widget[0]) {
+
+            } else {
+              tab = parent.find('.ui-dialog-content').dialogExtend('gettab', ui.draggable.data('ui-dialog-extend-tab'));
+              return _this.addtab(tab.header, tab.data);
+            }
+          }
+        });
+        return this.addtab(header[0], data);
+      }
+    },
+    addtab: function(header, data, active) {
+      var datac, tab, title, titlebar, widget;
+
+      if (active == null) {
+        active = true;
+      }
+      widget = $(this.element[0]).dialog('widget');
+      titlebar = widget.find('.ui-dialog-titlebar');
+      title = $('<span/>').addClass('ui-dialog-title ui-corner-top ui-dialog-title-tab ui-state-default').append(header);
+      title.draggable({
+        opacity: 0.7,
+        helper: "clone"
+      });
+      title.click(function() {
+        widget.find('.ui-dialog-content').children().hide();
+        $(title.data("ui-dialog-extend-tab").data).parent().show();
+        titlebar.children().removeClass('ui-state-active ui-dialog-title-tab-active');
+        return title.addClass('ui-state-active ui-dialog-title-tab-active');
+      });
+      this._hoverable(title);
+      tab = {
+        header: header,
+        data: data
+      };
+      this._tabs.push(tab);
+      title.data("ui-dialog-extend-tab", tab);
+      titlebar.append(title);
+      datac = $('<div/>').data("ui-dialog-extend-tab", tab).append(data);
+      widget.find('.ui-dialog-content').append(datac);
+      if (active === true) {
+        widget.find('.ui-dialog-content').children().hide();
+        datac.show();
+        titlebar.children().removeClass('ui-state-active ui-dialog-title-tab-active');
+        return title.addClass('ui-state-active ui-dialog-title-tab-active');
+      } else {
+        return datac.hide();
+      }
+    },
+    gettab: function(tabdata) {
+      var i, tab, _i, _len, _ref;
+
+      _ref = this._tabs;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        tab = _ref[i];
+        if (tab.header === tabdata.header) {
+          this._tabs.splice(i, 1);
+          $(tab.header).parent().remove();
+          if (this._tabs.length === 0) {
+            $(this.element[0]).dialog('close');
+            $(this.element[0]).dialog('destroy');
+          }
+          return {
+            header: tab.header,
+            data: tab.data.remove()
+          };
+        }
+      }
+    },
+    _initStyles_tabable: function() {
+      var style;
+
+      if (!$(".dialog-extend-tabable-css").length) {
+        style = '';
+        style += '<style class="dialog-extend-tabable-css" type="text/css">';
+        style += '.ui-dialog .ui-dialog-titlebar-tabable { padding: 0; }';
+        style += '.ui-dialog .ui-dialog-title-tab { padding: .4em 1em; width: auto; border-bottom-width: 0; }';
+        style += '.ui-dialog .ui-dialog-title-tab-active { padding-bottom: .6em; margin-bottom: -1px; }';
+        style += '</style>';
+        return $(style).appendTo("body");
+      }
     }
   });
 

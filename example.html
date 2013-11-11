@@ -223,6 +223,13 @@
           <label for="is-draggable">Draggable</label>
         </div>
     </fieldset>
+    <fieldset id="config-dialogextend">
+        <legend>Dialog Extend</legend>
+        <div>
+          <input type="checkbox" id="is-tabable" checked="checked" />
+          <label for="is-tabable">Tabable</label>
+        </div>
+    </fieldset>
   </form>
 </section>
 <br clear="both" />
@@ -268,6 +275,7 @@ $(function(){
       "closable" : $("#button-close").is(":checked"),
       "maximizable" : $("#button-maximize").is(":checked"),
       "minimizable" : $("#button-minimize").is(":checked"),
+      "tabable" : $("#is-tabable").is(":checked"),
       "minimizeLocation" : $("#my-form [name=minimizeLocation]:checked").val() || false,
       "collapsable" : $("#button-collapse").is(":checked"),
       "dblclick" : $("#my-form [name=dblclick]:checked").val() || false,
@@ -282,12 +290,12 @@ $(function(){
     $("#my-form [name=event]").each(function(){
       if ( $(this).is(":checked") ) {
         dialogExtendOptions[$(this).attr("rel")] = function(evt, a,b,c) {
-          $(evt.target).prepend(evt.type+"@"+evt.timeStamp+"<br />");
+          $(evt.target).find('.events').prepend(evt.type+"@"+evt.timeStamp+"<br />");
         };
       }
     });
     // open dialog
-    last = $("<div />").dialog(dialogOptions).dialogExtend(dialogExtendOptions);
+    last = $("<div><div class='events'></div></div>").dialog(dialogOptions).dialogExtend(dialogExtendOptions);
   });
   
   //click to reopen dialog

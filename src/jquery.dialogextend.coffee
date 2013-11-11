@@ -4,6 +4,7 @@ $.widget "ui.dialogExtend",
   version: "2.0.0"
   
   modes:{}
+  modules:{}
   options:
     "closable" : true
     "dblclick" : false
@@ -24,9 +25,8 @@ $.widget "ui.dialogExtend",
     @_initStyles()
     @_initButtons()
     @_initTitleBar()
+    @_initModules()
     @_setState "normal"
-    @_on "load",(e)->
-      console.log "test",e
     @_trigger "load"
   
   _setState: (state)->
@@ -47,6 +47,8 @@ $.widget "ui.dialogExtend",
     # check modules options
     for name of @modes
       if @["_verifyOptions_"+name] then @["_verifyOptions_"+name]()
+    for name of @modules
+      if @["_verifyOptions_"+name] then @["_verifyOptions_"+name]()
   
   _initStyles:()->
     if not $(".dialog-extend-css").length
@@ -61,6 +63,8 @@ $.widget "ui.dialogExtend",
       style += '</style>'
       $(style).appendTo("body")
     for name of @modes
+      @["_initStyles_"+name]()
+    for name of @modules
       @["_initStyles_"+name]()
 
   _initButtons:()->
@@ -187,6 +191,10 @@ $.widget "ui.dialogExtend",
             )
         else
           $.error( "jQuery.dialogExtend Error : Invalid <titlebar> value '" + @options.titlebar + "'" );
+  
+  _initModules:()->
+    for name of @modules
+      if @["_initModule_"+name] then @["_initModule_"+name]()
 
   state:()->
     return @_state
