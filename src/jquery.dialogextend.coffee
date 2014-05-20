@@ -195,8 +195,6 @@ $.widget "ui.dialogExtend",
     # trigger custom event
     @_trigger "beforeRestore"
     @_restore()
-    # mark new state ===> must set state *AFTER* restore because '_restore' will check 'beforeState'
-    @_setState "normal"
     # modify dialog buttons according to new state
     @_toggleButtons()
     # trigger custom event
@@ -205,6 +203,8 @@ $.widget "ui.dialogExtend",
   _restore:()->
     unless @_state is "normal"
       @["_restore_"+@_state]()
+      # mark new state
+      @_setState "normal"
       # return focus to window
       $(@element[0]).dialog("widget").focus()
   
@@ -237,19 +237,20 @@ $.widget "ui.dialogExtend",
         "wrap" : @original_titlebar_wrap
     }
   
-  _toggleButtons:()->
+  _toggleButtons:(newstate)->
+    state = newstate or @_state
     $(@element[0]).dialog("widget")
       .find(".ui-dialog-titlebar-restore")
-        .toggle( @_state != "normal" )
+        .toggle( state != "normal" )
         .css({ "right" : "1.4em" })
       .end()
     for name,mode of @modes
       $(@element[0]).dialog("widget")
       .find(".ui-dialog-titlebar-"+name)
-      .toggle( @_state != mode.state && @options[mode.option] )
+      .toggle( state != mode.state && @options[mode.option] )
     # place restore button after current state button
     for name,mode of @modes
-      if mode.state is @_state
+      if mode.state is state
         $(@element[0]).dialog("widget")
           .find(".ui-dialog-titlebar-restore")
             .insertAfter(
