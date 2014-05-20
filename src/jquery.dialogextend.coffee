@@ -134,7 +134,7 @@ $.widget "ui.dialogExtend",
   
   _initModuleButton:(name,mode)->
     buttonPane = $(@element[0]).dialog("widget").find '.ui-dialog-titlebar-buttonpane'
-    buttonPane.append('<a class="ui-dialog-titlebar-'+name+' ui-corner-all ui-state-default" href="#"><span class="ui-icon '+@options.icons[name]+'">'+name+'</span></a>')
+    buttonPane.append('<a class="ui-dialog-titlebar-'+name+' ui-corner-all ui-state-default" href="#" title="'+name+'"><span class="ui-icon '+@options.icons[name]+'">'+name+'</span></a>')
       .find(".ui-dialog-titlebar-"+name)
         .attr("role", "button")
         .mouseover(()-> $(@).addClass("ui-state-hover"))
