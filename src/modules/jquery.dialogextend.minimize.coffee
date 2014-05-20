@@ -15,6 +15,10 @@ $.extend true,$.ui.dialogExtend.prototype,
     "minimize" : null
   
   minimize:()->
+    # trigger custom event
+    @_trigger "beforeMinimize"
+    unless @_state is "normal"
+      @_restore()
     # caculate new dimension
     newHeight = $(@element[0]).dialog("widget").find(".ui-dialog-titlebar").height()+15
     newWidth = 200
@@ -36,9 +40,6 @@ $.extend true,$.ui.dialogExtend.prototype,
       "margin" : 1
     fixedContainer.append(overlay)
     $(@element[0]).data("dialog-extend-minimize-overlay",overlay)
-    # start!
-    # trigger custom event
-    @_trigger "beforeMinimize"
     # remember original state
     @_saveSnapshot()
     # disable draggable-handle (for <titlebar=none> only)

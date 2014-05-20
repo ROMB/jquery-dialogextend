@@ -430,6 +430,10 @@
     minimize: function() {
       var fixedContainer, newHeight, newWidth, overlay;
 
+      this._trigger("beforeMinimize");
+      if (this._state !== "normal") {
+        this._restore();
+      }
       newHeight = $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").height() + 15;
       newWidth = 200;
       if ($("#dialog-extend-fixed-container").length) {
@@ -450,7 +454,6 @@
       });
       fixedContainer.append(overlay);
       $(this.element[0]).data("dialog-extend-minimize-overlay", overlay);
-      this._trigger("beforeMinimize");
       this._saveSnapshot();
       if ($(this.element[0]).dialog("option", "draggable")) {
         $(this.element[0]).dialog("widget").draggable("option", "handle", null).find(".ui-dialog-draggable-handle").css("cursor", "text").end();
