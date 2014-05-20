@@ -205,6 +205,8 @@ $.widget "ui.dialogExtend",
   _restore:()->
     unless @_state is "normal"
       @["_restore_"+@_state]()
+      # return focus to window
+      $(@element[0]).dialog("widget").focus()
   
   _saveSnapshot:()->
     if @_state is "normal" 

@@ -188,7 +188,8 @@
     },
     _restore: function() {
       if (this._state !== "normal") {
-        return this["_restore_" + this._state]();
+        this["_restore_" + this._state]();
+        return $(this.element[0]).dialog("widget").focus();
       }
     },
     _saveSnapshot: function() {
