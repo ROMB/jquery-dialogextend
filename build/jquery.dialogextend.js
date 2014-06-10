@@ -99,7 +99,7 @@
         "right": "auto",
         "margin": 0
       }).find(".ui-icon").removeClass("ui-icon-closethick").addClass(this.options.icons.close).end().appendTo(buttonPane).end();
-      buttonPane.append('<a class="ui-dialog-titlebar-restore ui-corner-all ui-state-default" href="#"><span class="ui-icon ' + this.options.icons.restore + '">restore</span></a>').find('.ui-dialog-titlebar-restore').attr("role", "button").mouseover(function() {
+      buttonPane.append('<a class="ui-dialog-titlebar-restore ui-corner-all ui-state-default" href="#"><span class="ui-icon ' + this.options.icons.restore + '" title="restore">restore</span></a>').find('.ui-dialog-titlebar-restore').attr("role", "button").mouseover(function() {
         return $(this).addClass("ui-state-hover");
       }).mouseout(function() {
         return $(this).removeClass("ui-state-hover");
