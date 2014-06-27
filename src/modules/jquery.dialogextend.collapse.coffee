@@ -23,12 +23,14 @@ $.extend true,$.ui.dialogExtend.prototype,
       @_restore()
     # remember original state
     @_saveSnapshot()
+    pos = $(@element[0]).dialog("widget").position()
     $(@element[0])
       # modify dialog size (after hiding content)
       .dialog("option",
         "resizable" : false
         "height" : newHeight
         "maxHeight" : newHeight
+        "position" : [pos.left - $(document).scrollLeft(),pos.top - $(document).scrollTop()]
       )
       .on('dialogclose',@_collapse_restore)
       # hide content

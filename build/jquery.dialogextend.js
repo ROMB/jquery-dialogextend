@@ -274,7 +274,7 @@
       "collapse": null
     },
     collapse: function() {
-      var newHeight;
+      var newHeight, pos;
 
       newHeight = $(this.element[0]).dialog("widget").find(".ui-dialog-titlebar").height() + 15;
       this._trigger("beforeCollapse");
@@ -282,10 +282,12 @@
         this._restore();
       }
       this._saveSnapshot();
+      pos = $(this.element[0]).dialog("widget").position();
       $(this.element[0]).dialog("option", {
         "resizable": false,
         "height": newHeight,
-        "maxHeight": newHeight
+        "maxHeight": newHeight,
+        "position": [pos.left - $(document).scrollLeft(), pos.top - $(document).scrollTop()]
       }).on('dialogclose', this._collapse_restore).hide().dialog("widget").find(".ui-dialog-buttonpane:visible").hide().end().find(".ui-dialog-titlebar").css("white-space", "nowrap").end().find(".ui-dialog-content");
       this._setState("collapsed");
       this._toggleButtons();
