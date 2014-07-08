@@ -30,7 +30,7 @@
     "homepage": "http://romb.github.io/jquery-dialogextend/",
     "docs": "http://romb.github.io/jquery-dialogextend/",
     "download": "https://github.com/ROMB/jquery-dialogextend",
-    "demo": "http://romb.github.io/jquery-dialogextend/exmaple.html",
+    "demo": "http://romb.github.io/jquery-dialogextend/example.html",
     "dependencies": {
         "jquery": "~1.11.1",
         "jquery-ui": "~1.11.0"
