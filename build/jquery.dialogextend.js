@@ -364,7 +364,8 @@
         "width": newWidth,
         "position": {
           my: "left top",
-          at: "left top"
+          at: "left top",
+          of: window
         }
       });
       this._setState("maximized");
@@ -383,7 +384,8 @@
         "maxHeight": original.size.maxHeight,
         "position": {
           my: "left top",
-          at: "left+" + original.position.left + " top+" + original.position.top
+          at: "left+" + original.position.left + " top+" + original.position.top,
+          of: window
         }
       });
       if ($(this.element[0]).dialog("option", "draggable")) {

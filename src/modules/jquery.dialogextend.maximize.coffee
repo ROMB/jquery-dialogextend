@@ -50,6 +50,7 @@ $.extend true,$.ui.dialogExtend.prototype,
         "position" :
             my: "left top"
             at: "left top"
+            of: window
       )
       # mark new state
       @_setState "maximized"
@@ -77,6 +78,7 @@ $.extend true,$.ui.dialogExtend.prototype,
         "position" :
           my: "left top"
           at: "left+"+original.position.left+" top+"+original.position.top
+          of: window
       )
       # restore draggable-handle (for <titlebar=none> only)
       if $(@element[0]).dialog("option","draggable")
