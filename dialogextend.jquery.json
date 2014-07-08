@@ -9,7 +9,7 @@
         "collapse",
         "extend"
     ],
-    "version": "2.0.3",
+    "version": "2.0.4",
     "author": {
         "name": "ROMB",
         "url": "https://github.com/ROMB"
@@ -32,7 +32,7 @@
     "download": "https://github.com/ROMB/jquery-dialogextend",
     "demo": "http://romb.github.io/jquery-dialogextend/exmaple.html",
     "dependencies": {
-        "jquery": "~1.9.1",
-        "jquery-ui": "~1.10.2"
+        "jquery": "~1.11.1",
+        "jquery-ui": "~1.11.0"
     }
 }

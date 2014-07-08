@@ -1,3 +1,13 @@
+2.0.4 /2014-07-08
+===
+
+- fix bug: iframe reset after minimization
+- fix bug: forgot to restore state to normal before minimization
+- fix bug: dialog lose focus after restore
+- fix bug: invalid dialog position on collapse
+- enhancement: added tooltips to title buttons
+- update to jquery 1.11.1 and jquery.ui 1.11.0
+
 2.0.3 /2013-11-10
 ===
 

@@ -1,4 +1,4 @@
-jquery-dialogextend 2.0.3 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend) [![Build Status](https://travis-ci.org/ROMB/jquery-dialogextend.png?branch=master)](https://travis-ci.org/ROMB/jquery-dialogextend)
+jquery-dialogextend 2.0.4 [![project status](http://stillmaintained.com/ROMB/jquery-dialogextend.png)](http://stillmaintained.com/ROMB/jquery-dialogextend) [![Build Status](https://travis-ci.org/ROMB/jquery-dialogextend.png?branch=master)](https://travis-ci.org/ROMB/jquery-dialogextend)
 ===
 Download
 ===
@@ -8,8 +8,8 @@ Download
 
 Compatible
 ===
-- jQuery 1.9.1
-- jQueryUI 1.10.2
+- jQuery 1.11.1
+- jQueryUI 1.11.0
 
 Overview
 ===
@@ -24,12 +24,11 @@ Overview
 
 Demo
 ===
-- Test Tool : [http://jsbin.com/ehagoy/154/](http://jsbin.com/ehagoy/154/)
-- *Stylesheet of JSBin seems to ruin test tool in IE8. Other browsers are fine.*
+- Test Tool : [http://romb.github.io/jquery-dialogextend/example.html](http://romb.github.io/jquery-dialogextend/example.html)
 
 Tested Browsers
 ===
-- Chrome 20
+- Chrome 35
 - Firefox 14
 - IE 8
 

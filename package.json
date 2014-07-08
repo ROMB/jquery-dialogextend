@@ -2,7 +2,7 @@
 	"name": "jquery-dialogextend",
 	"title": "jQuery dialogExtend",
 	"description": "Maximize and Minimize Buttons for UI Dialog",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/ROMB/jquery-dialogextend.git"
