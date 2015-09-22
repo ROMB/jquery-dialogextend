@@ -14,8 +14,8 @@ $.extend true,$.ui.dialogExtend.prototype,
     "maximize" : null
 
   maximize:()->
-    newHeight = $(window).height()-11;
-    newWidth = $(window).width()-11;
+    newHeight = $(window).height();
+    newWidth = $(window).width();
     # start!
     # trigger custom event
     @_trigger "beforeMaximize"
