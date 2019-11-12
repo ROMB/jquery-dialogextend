@@ -348,8 +348,8 @@
     maximize: function() {
       var newHeight, newWidth;
 
-      newHeight = $(window).height() - 11;
-      newWidth = $(window).width() - 11;
+      newHeight = $(window).height();
+      newWidth = $(window).width();
       this._trigger("beforeMaximize");
       if (this._state !== "normal") {
         this._restore();
